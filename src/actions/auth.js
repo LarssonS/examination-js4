@@ -20,3 +20,15 @@ export const startLogout = () => {
     return firebase.auth().signOut();
   };
 };
+
+/* export const loginWithEmail = (email) => ({
+  type: 'LOGIN_WITH_EMAIL',
+  email
+});
+
+export const startRegisterWithEmail = () => {
+  return () => {
+    return firebase.auth().createUserWithEmailAndPassword(email, password)
+  };
+};
+ */
