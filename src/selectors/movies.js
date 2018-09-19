@@ -1,7 +1,7 @@
 import moment from 'moment';
 
 //Get visible movies
-export default (movies, { text, sortBy, startDate, endDate }) => {
+export const selectMovies = (movies, { text, sortBy, startDate, endDate }) => {
     return movies.filter((movie) => {
         const createdAtMoment = moment(movie.createdAt);
         const startDateMatch = startDate ? startDate.isSameOrBefore(createdAtMoment, 'day') : true;
@@ -9,9 +9,13 @@ export default (movies, { text, sortBy, startDate, endDate }) => {
         const textMatch = movie.title.toLowerCase().includes(text.toLowerCase());
 
         return startDateMatch && endDateMatch && textMatch;
-    }).filter((movie) => {
-        if(movie.genre === sortBy) {
+    });
+}
+
+export const selectMoviesByGenre = (movies, { sortBy }) => {
+    return movies.filter((movie) => {
+        if(movie.genre.toLowerCase() === sortBy.toLowerCase()) {
             return movie;
         }
     });
-}
+} 

@@ -8,11 +8,9 @@ const MovieListItem = ({ id, title, description, director, genre, filmWrapper, r
         <Link to={`/edit/${id}`}>
             <h3>{title}</h3>
         </Link>
-        <p>
-            {description}
-            -
-            {moment(createdAt).format('MMMM Do, YYYY')}
-        </p>
+        <p>{description}</p>
+        <p>{genre}</p>
+        <p>{moment(createdAt).format('MMMM Do, YYYY')}</p>
     </div>
 );
 

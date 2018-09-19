@@ -27,6 +27,9 @@ class MovieListFilters extends React.Component {
                     value={this.props.filters.sortBy}
                     onChange={(e) => {
                         switch (e.target.value) {
+                            case 'none':
+                                this.props.dispatch(sortByGenre(''));
+                                break;
                             case 'action':
                                 this.props.dispatch(sortByGenre('action'));
                                 break;
@@ -54,6 +57,8 @@ class MovieListFilters extends React.Component {
                         }
                     }}
                 >
+                    <option value="" disabled>Select your genre</option>
+                    <option value="none">none</option>
                     <option value="action">Action</option>
                     <option value="comedy">Comedy</option>
                     <option value="sci-fi">Sci-Fi</option>
