@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 //import numeral from 'numeral';
 
-const ExpenseListItem = ({ id, title, description, director, genre, filmWrapper, raiting, createdAt }) => {
+const MovieListItem = ({ id, title, description, director, genre, filmWrapper, raiting, createdAt }) => (
     <div>
         <Link to={`/edit/${id}`}>
             <h3>{title}</h3>
@@ -14,6 +14,6 @@ const ExpenseListItem = ({ id, title, description, director, genre, filmWrapper,
             {moment(createdAt).format('MMMM Do, YYYY')}
         </p>
     </div>
-};
+);
 
-export default ExpenseListItem;
+export default MovieListItem;

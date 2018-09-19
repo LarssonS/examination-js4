@@ -13,5 +13,5 @@ export default (movies, { text, sortBy, startDate, endDate }) => {
         if(movie.genre === sortBy) {
             return movie;
         }
-    })
+    });
 }
