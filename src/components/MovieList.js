@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MovieListItem from './MovieListItem';
-import { selectMovies, selectMoviesByGenre } from '../selectors/movies';
+import selectMovies from '../selectors/movies';
 
 const MovieList = (props) => (
     <div>
@@ -15,8 +15,7 @@ const MovieList = (props) => (
 
 const mapStateToProps = (state) => {
     return {
-        movies: selectMovies(state.movies, state.filters),
-        moviesByGenre: selectMoviesByGenre(state.movies, state.filters)
+        movies: selectMovies(state.movies, state.filters)
     };
 };
 

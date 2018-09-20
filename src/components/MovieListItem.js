@@ -9,6 +9,7 @@ const MovieListItem = ({ id, title, description, director, genre, filmWrapper, r
             <h3>{title}</h3>
         </Link>
         <p>{description}</p>
+        <img src={filmWrapper} alt={filmWrapper}/>
         <p>{genre}</p>
         <p>{moment(createdAt).format('MMMM Do, YYYY')}</p>
     </div>

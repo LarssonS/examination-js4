@@ -13,7 +13,7 @@ export default class MovieForm extends React.Component {
             director: props.movie ? props.movie.director : '',
             genre: props.movie ? props.movie.genre : '',
             filmWrapper: props.movie ? props.movie.filmWrapper : '',
-            raiting: props.movie ? props.movie.raiting : '',
+            raiting: props.movie ? props.movie.raiting : 0,
             createdAt: props.movie ? moment(props.movie.createdAt) : moment(),
             calendarFocused: false,
             error: ''
@@ -105,12 +105,19 @@ export default class MovieForm extends React.Component {
                         value={this.state.director}
                         onChange={this.onDirectorChange}
                     />
-                    <input
-                        type="text"
-                        placeholder="Genre"
-                        value={this.state.genre}
+                    <select 
                         onChange={this.onGenreChange}
-                    />
+                    >
+                        <option disabled>Select genre</option>
+                        <option>None</option>
+                        <option value="action">Action</option>
+                        <option value="comedy">Comedy</option>
+                        <option value="sci-fi">Sci-Fi</option>
+                        <option value="war">War</option>
+                        <option value="drama">Drama</option>
+                        <option value="sport">Sport</option>
+                        <option value="documentary">Documentary</option>
+                    </select>
                     <input
                         type="text"
                         placeholder="Film wrapper"
@@ -118,8 +125,8 @@ export default class MovieForm extends React.Component {
                         onChange={this.onFilmWrapperChange}
                     />
                     <input 
-                        type="text"
-                        placeholder="Raiting 1-5"
+                        type="number" min="1" max="5"
+                        placeholder="Rate"
                         value={this.state.raiting}
                         onChange={this.onRaitingChange}
                     />
