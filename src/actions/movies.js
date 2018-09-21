@@ -17,13 +17,14 @@ export const startAddMovie = (movieData = {}) => {
             genre = '',
             filmWrapper = '',
             raiting = 0,
-            createdAt = 0
+            createdAt = 0,
         } = movieData;
         const movie = { title, description, director, genre, filmWrapper, raiting, createdAt };
 
-        return database.ref(`users/${uid}/movies`).push(movie).then((ref) => {
+        return database.ref(`users/movies`).push(movie).then((ref) => {
             dispatch(addMovie({
                 id: ref.key,
+                uid: uid,
                 ...movie
             }));
         });
@@ -38,7 +39,7 @@ export const removeMovie = ({ id } = {}) => ({
 export const startRemoveMovie = ({ id } = {}) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
-        return database.ref(`users/${uid}/movies/${id}`).remove().then(() => {
+        return database.ref(`users/movies/${id}`).remove().then(() => {
             dispatch(removeMovie({ id }));
         });
     };
@@ -53,7 +54,7 @@ export const editMovie = (id, updates) => ({
 export const startEditMovie = (id, updates) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
-        return database.ref(`users/${uid}/movies/${id}`).update(updates).then(() => {
+        return database.ref(`users/movies/${id}`).update(updates).then(() => {
             dispatch(editMovie(id, updates));
         });
     };
@@ -67,7 +68,7 @@ export const setMovies = (movies) => ({
 export const startSetMovies = () => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
-        return database.ref(`users/${uid}/movies`).once('value').then((snapshot) => {
+        return database.ref(`users/movies`).once('value').then((snapshot) => {
             const movies = [];
 
             snapshot.forEach((childSnapshot) => {

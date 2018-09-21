@@ -21,14 +21,16 @@ export const startLogout = () => {
   };
 };
 
-/* export const loginWithEmail = (email) => ({
-  type: 'LOGIN_WITH_EMAIL',
-  email
-});
+export const startOnSubmit = (email, password) => {
+  firebase.auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then(console.log("Created User!"))
+    .catch(error => console.log(error));
+}
 
-export const startRegisterWithEmail = () => {
-  return () => {
-    return firebase.auth().createUserWithEmailAndPassword(email, password)
-  };
-};
+/* export const startOnLogin = (email, password) => {
+  firebase.auth()
+    .signInWithEmailAndPassword(email, password)
+    .catch(error => console.log(error))
+}
  */

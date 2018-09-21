@@ -12,6 +12,7 @@ import { firebase } from './firebase/firebase';
 import LoadingPage from './components/LoadingPage';
 
 const store = configureStore();
+store.subscribe(() => { console.log(store.getState()); });
 const jsx = (
     <Provider store={store}>
         <AppRouter />

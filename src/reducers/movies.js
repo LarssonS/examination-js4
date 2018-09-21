@@ -16,7 +16,7 @@ export default (state = moviesReducerDefaultState, action ) => {
                 if (movie.id === action.id) {
                     return {
                         ...movie,
-                        //action.updates
+                        ...action.updates
                     };
                 } else {
                     return movie;
