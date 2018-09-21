@@ -39,7 +39,7 @@ export const startRemoveMovie = ({ id } = {}) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
         return database.ref(`users/${uid}/movies/${id}`).remove().then(() => {
-            dispatch(removeExpense({ id }));
+            dispatch(removeMovie({ id }));
         });
     };
 };

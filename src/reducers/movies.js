@@ -19,7 +19,7 @@ export default (state = moviesReducerDefaultState, action ) => {
                         //action.updates
                     };
                 } else {
-                    return expense;
+                    return movie;
                 }
             });
         case 'SET_MOVIES':
