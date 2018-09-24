@@ -32,7 +32,7 @@ firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     store.dispatch(login(user.uid));
     store.dispatch(startSetMovies()).then(() => {
-        renderApp();
+    renderApp();
         if (history.location.pathname === '/') {
             history.push('/dashboard');
         }

@@ -138,7 +138,7 @@ export default class MovieForm extends React.Component {
                         numberOfMonths={1}
                         isOutsideRange={() => false}
                     />
-                    <button>Add movie</button>
+                    {this.props.movie ? <button>Update movie</button> : <button>Add Movie</button>}
                 </form>
             </div>
         )

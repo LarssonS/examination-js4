@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-//import numeral from 'numeral';
 
 const MovieListItem = ({ id, title, description, director, genre, filmWrapper, raiting, createdAt }) => (
     <div>
-        <Link to={`/edit/${id}`}>
+        <Link to={`/movie/${id}`}>
             <h3>{title}</h3>
         </Link>
         <p>{description}</p>

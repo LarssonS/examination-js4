@@ -13,7 +13,7 @@ export class EditMoviePage extends React.Component {
         this.props.history.push('/');
     };
     render() {
-        return(
+        return (
             <div>
                 <MovieForm 
                     movie={this.props.movie}

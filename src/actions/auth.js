@@ -28,9 +28,8 @@ export const startOnSubmit = (email, password) => {
     .catch(error => console.log(error));
 }
 
-/* export const startOnLogin = (email, password) => {
+export const startOnLogin = (email, password) => {
   firebase.auth()
     .signInWithEmailAndPassword(email, password)
     .catch(error => console.log(error))
 }
- */
