@@ -2,21 +2,34 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { startLogout } from '../actions/auth';
+import {
+  Navbar,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  Button,
+  Container
+} from 'reactstrap';
 
 export const Header = ({ startLogout }) => (
-  <header className="header">
-    <div className="content-container">
-      <div className="header__content">
-        <Link className="header__title" to="/dashboard">
-          <h1>MovieHub</h1>
-        </Link>
-        <Link to="/create" className="header__title">
-          <h1>Add a movie</h1>
-        </Link>
-        <button className="button button--link" onClick={startLogout}>Logout</button>
-      </div>
-    </div>
-  </header>
+    <Navbar color="light" light expand="md">
+        <Container>
+            <Link to="/dashboard" className="text-dark h1">
+                MovieHub
+            </Link>
+                <Nav className="ml-auto" navbar>
+                    <NavItem className="mr-5">
+                        <Link to="/create" className="text-dark h2">
+                            Add a movie
+                        </Link>
+                    </NavItem>
+                    <NavItem>
+                        <Button className="btn-lg" onClick={startLogout}>Logout</Button>
+                    </NavItem>
+                </Nav>
+        </Container>
+    </Navbar>
 );
 
 const mapDispatchToProps = (dispatch) => ({

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MovieForm from './MovieForm';
 import { startEditMovie, startRemoveMovie } from '../actions/movies';
+import { Container, Button } from 'reactstrap';
 
 export class EditMoviePage extends React.Component {
     onSubmit = (movie) => {
@@ -15,11 +16,13 @@ export class EditMoviePage extends React.Component {
     render() {
         return (
             <div>
-                <MovieForm 
-                    movie={this.props.movie}
-                    onSubmit={this.onSubmit}
-                />
-                <button onClick={this.onRemove}>Remove</button>
+                <Container>
+                    <MovieForm 
+                        movie={this.props.movie}
+                        onSubmit={this.onSubmit}
+                    />
+                    <Button onClick={this.onRemove}>Remove</Button>
+                </Container>
             </div>
         );
     }

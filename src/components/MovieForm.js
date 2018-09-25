@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
+import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 export default class MovieForm extends React.Component {
     constructor(props) {
@@ -84,62 +85,87 @@ export default class MovieForm extends React.Component {
     render() {
         return (
             <div>
-                {this.state.error && <p>{this.state.error}</p>}
-                <form onSubmit={this.onSubmit}>
-                    <input 
-                        type="text"
-                        placeholder="Title"
-                        autoFocus
-                        value={this.state.title}
-                        onChange={this.onTitleChange}
-                    />
-                    <input
-                        type="text"
-                        placeholder="Description"
-                        value={this.state.description}
-                        onChange={this.onDescriptionChange}
-                    />
-                    <input
-                        type="text"
-                        placeholder="Director"
-                        value={this.state.director}
-                        onChange={this.onDirectorChange}
-                    />
-                    <select 
-                        onChange={this.onGenreChange}
-                    >
-                        <option disabled>Select genre</option>
-                        <option>None</option>
-                        <option value="action">Action</option>
-                        <option value="comedy">Comedy</option>
-                        <option value="sci-fi">Sci-Fi</option>
-                        <option value="war">War</option>
-                        <option value="drama">Drama</option>
-                        <option value="sport">Sport</option>
-                        <option value="documentary">Documentary</option>
-                    </select>
-                    <input
-                        type="text"
-                        placeholder="Film wrapper"
-                        value={this.state.filmWrapper}
-                        onChange={this.onFilmWrapperChange}
-                    />
-                    <input 
-                        type="number" min="1" max="5"
-                        placeholder="Rate"
-                        value={this.state.raiting}
-                        onChange={this.onRaitingChange}
-                    />
-                    <SingleDatePicker
-                        date={this.state.createdAt}
-                        onDateChange={this.onDateChange}
-                        focused={this.state.calendarFocused}
-                        onFocusChange={this.onFocusChange}
-                        numberOfMonths={1}
-                        isOutsideRange={() => false}
-                    />
-                    {this.props.movie ? <button>Update movie</button> : <button>Add Movie</button>}
-                </form>
+                <Form onSubmit={this.onSubmit}>
+                    {this.state.error && <p>{this.state.error}</p>}
+                    <FormGroup>
+                        <Label>Movie title</Label>
+                        <Input
+                            type="text"
+                            placeholder="Title"
+                            autoFocus
+                            value={this.state.title}
+                            bsSize="lg"
+                            onChange={this.onTitleChange}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Description</Label>
+                        <Input
+                            type="text"
+                            placeholder="Description"
+                            value={this.state.description}
+                            bsSize="lg"
+                            onChange={this.onDescriptionChange}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Director</Label>
+                        <Input
+                            type="text"
+                            placeholder="Director"
+                            value={this.state.director}
+                            bsSize="lg"
+                            onChange={this.onDirectorChange}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Movie genre</Label>
+                        <Input type="select" bsSize="lg" onChange={this.onGenreChange}>
+                            <option disabled>Select genre</option>
+                            <option>None</option>
+                            <option value="action">Action</option>
+                            <option value="comedy">Comedy</option>
+                            <option value="sci-fi">Sci-Fi</option>
+                            <option value="war">War</option>
+                            <option value="drama">Drama</option>
+                            <option value="sport">Sport</option>
+                            <option value="documentary">Documentary</option>
+                        </Input>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Film image address</Label>
+                        <Input
+                            type="text"
+                            placeholder="Film wrapper"
+                            value={this.state.filmWrapper}
+                            bsSize="lg"
+                            onChange={this.onFilmWrapperChange}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Movie raiting</Label>
+                        <Input
+                            type="number" min="1" max="5"
+                            placeholder="Rate"
+                            value={this.state.raiting}
+                            bsSize="lg"
+                            onChange={this.onRaitingChange}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <SingleDatePicker
+                            date={this.state.createdAt}
+                            onDateChange={this.onDateChange}
+                            focused={this.state.calendarFocused}
+                            onFocusChange={this.onFocusChange}
+                            numberOfMonths={1}
+                            isOutsideRange={() => false}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        {this.props.movie ? <Button size="lg">Update movie</Button> : <Button size="lg">Add Movie</Button>}
+                    </FormGroup>
+                </Form>
             </div>
         )
     }
