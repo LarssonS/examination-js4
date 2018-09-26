@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { startLogin, startOnLogin, startOnSubmit } from '../actions/auth';
+import { startLogin, startOnLogin, startOnRegister } from '../actions/auth';
 
 export class LoginPage extends React.Component {
     constructor(props) {
@@ -46,7 +46,7 @@ export class LoginPage extends React.Component {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        startOnSubmit(email, password);
+        startOnRegister(email, password);
     }
     onLogin = (e) => {
         e.preventDefault();

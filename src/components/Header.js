@@ -4,10 +4,8 @@ import { connect } from 'react-redux';
 import { startLogout } from '../actions/auth';
 import {
   Navbar,
-  NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   Button,
   Container
 } from 'reactstrap';

@@ -11,7 +11,7 @@ const MovieList = (props) => (
         <Row>
             {props.movies.length === 0 && <p>No movies</p>}
                 {props.movies.map((movie) => {
-                    return <Col sm="3" key={movie.id}> <MovieListItem {...movie} /> </Col> 
+                    return <Col sm="3" key={movie.id} className="mt-4"> <MovieListItem {...movie} /> </Col> 
                 })}
         </Row>
     </div>

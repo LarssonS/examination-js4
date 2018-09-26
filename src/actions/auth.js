@@ -21,7 +21,7 @@ export const startLogout = () => {
   };
 };
 
-export const startOnSubmit = (email, password) => {
+export const startOnRegister = (email, password) => {
   firebase.auth()
     .createUserWithEmailAndPassword(email, password)
     .then(console.log("Created User!"))

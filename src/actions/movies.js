@@ -17,9 +17,9 @@ export const startAddMovie = (movieData = {}) => {
             genre = '',
             filmWrapper = '',
             raiting = 0,
-            createdAt = 0,
+            createdAt = 0
         } = movieData;
-        const movie = { title, description, director, genre, filmWrapper, raiting, createdAt };
+        const movie = { title, description, director, genre, filmWrapper, raiting, createdAt, uid };
 
         return database.ref(`users/movies`).push(movie).then((ref) => {
             dispatch(addMovie({

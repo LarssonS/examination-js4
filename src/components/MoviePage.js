@@ -7,6 +7,7 @@ import { Card, CardImg, CardText, CardBody,
 
 export class MoviePage extends React.Component {
     render() {
+        console.log('uid:' + this.props.uid + 'movieUid:' + this.props.movie.uid);
         return (
             <div>
                 <Container className="d-flex justify-content-center">
@@ -22,11 +23,13 @@ export class MoviePage extends React.Component {
                                 <CardText>Director: {this.props.movie.director}</CardText>
                                 <CardText>Description: {this.props.movie.description}</CardText>
                                 <CardText>Date added: {moment(this.props.movie.createdAt).format('MMMM Do, YYYY')}</CardText>
-                                <Button className="btn-dark btn-lg mr-2">
+                               
+                
+                                {this.props.uid === this.props.movie.uid && <Button className="btn-dark btn-lg mr-2">
                                     <Link className="text-light" to={`/edit/${this.props.movie.id}`}>
                                         Edit
                                     </Link>
-                                </Button>
+                                </Button>}
                                 <Button className="btn-dark btn-lg">
                                     <Link className="text-light" to={'/dashboard'}>
                                         Dashboard
@@ -43,7 +46,8 @@ export class MoviePage extends React.Component {
 
 const mapStateToProps = (state, props) => {
     return {
-        movie: state.movies.find((movie) => movie.id === props.match.params.id)
+        movie: state.movies.find((movie) => movie.id === props.match.params.id),
+        uid: state.auth.uid
     };
 };
 
