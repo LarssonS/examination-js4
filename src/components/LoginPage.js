@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { startLogin, startOnLogin, startOnRegister } from '../actions/auth';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Jumbotron, Container,
+        Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Collapse } from 'reactstrap';
 
 export class LoginPage extends React.Component {
     constructor(props) {
@@ -12,8 +13,14 @@ export class LoginPage extends React.Component {
 
         this.state = {
             register: false,
-            login: false
+            login: false,
+            isOpen: false
         };
+    }
+    toggle = () => {
+        this.setState(() => ({
+            isOpen: !this.state.isOpen
+        }));
     }
     startLogin = () => {
         this.props.startLogin();
@@ -59,38 +66,60 @@ export class LoginPage extends React.Component {
     render() {
         return (
             <div>
-                <div className="box-layout">
-                    <div className="box-layout__box">
-                        <h1 className="box-layout__title">MovieHub</h1>
-                        <p>Tag line for app.</p>
-                        <button onClick={this.showRegisterForm}>Register</button>
-                        <button onClick={this.showLoginForm}>Login</button>
-                        {this.state.register && <Form onSubmit={this.onRegister}>
-                            <FormGroup>
-                                <Label>Email</Label>
-                                <Input type="text" name="email" className="form-control-lg" placeholder="something@email.com" />
-                            </FormGroup>
-                            <FormGroup>
-                            <Label>Password</Label>
-                                <Input type="password" name="password" className="form-control-lg" placeholder="Your secret" />
-                            </FormGroup>      
-                            <Button>Register</Button>
-                        </Form>}
+                <Navbar color="light" light expand="md">
+                    <Container>
+                        <NavbarBrand>
+                            <h1>MovieHub</h1>
+                        </NavbarBrand>
+                        <NavbarToggler onClick={this.toggle} />
+                        <Collapse isOpen={this.state.isOpen} navbar>
+                            <Nav className="ml-auto" navbar>
+                                <NavItem className="ml-2">
+                                    <Button className="btn-lg" onClick={this.showRegisterForm}>Register</Button>
+                                </NavItem>
+                                <NavItem className="ml-2">
+                                    <Button className="btn-lg" onClick={this.showLoginForm}>Login</Button>
+                                </NavItem>
+                                <NavItem className="ml-2">
+                                    <Button className="btn-lg" onClick={this.startLogin}>Login with Google</Button>
+                                </NavItem>
+                            </Nav>
+                        </Collapse>
+                    </Container>    
+                </Navbar>
 
-                        {this.state.login && <form onSubmit={this.onLogin}>
-                            <FormGroup>
-                                <Label>Email</Label>
-                                <Input type="text" name="email" className="form-control-lg" placeholder="something@email.com" />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label>Password</Label>
-                                <Input type="password" name="password" className="form-control-lg" placeholder="Your secret" />
-                            </FormGroup>
-                            <Button>Login</Button>
-                        </form>}
-                        <button className="button" onClick={this.startLogin}>Login with Google</button>
-                    </div>
-                </div>
+                {this.state.register && <Container className="mt-5"> <Form onSubmit={this.onRegister}>
+                    <FormGroup>
+                        <Label>Email</Label>
+                        <Input type="text" name="email" className="form-control-lg" placeholder="something@email.com" />
+                    </FormGroup>
+                    <FormGroup>
+                    <Label>Password</Label>
+                        <Input type="password" name="password" className="form-control-lg" placeholder="Your secret" />
+                    </FormGroup>      
+                    <Button>Register</Button>
+                </Form> </Container>}
+
+                {this.state.login && <Container className="mt-5"> <form onSubmit={this.onLogin}>
+                    <FormGroup>
+                        <Label>Email</Label>
+                        <Input type="text" name="email" className="form-control-lg" placeholder="something@email.com" />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Password</Label>
+                        <Input type="password" name="password" className="form-control-lg" placeholder="Your secret" />
+                    </FormGroup>
+                    <Button>Login</Button>
+                </form> </Container>}
+
+                <Jumbotron className="h-100">
+                    <Container className="w-50">
+                        <h1 className="display-3">Welcome to MovieHub!</h1>
+                        <h2>This is a simple movie blog!</h2>
+                        <hr className="my-2" />
+                        <p className="h2">Register and login. Or sign in with google!</p>
+                    </Container>
+                </Jumbotron>
             </div>
         );
     }
