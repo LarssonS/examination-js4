@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { startLogin, startOnLogin, startOnRegister } from '../actions/auth';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 export class LoginPage extends React.Component {
     constructor(props) {
@@ -64,20 +65,28 @@ export class LoginPage extends React.Component {
                         <p>Tag line for app.</p>
                         <button onClick={this.showRegisterForm}>Register</button>
                         <button onClick={this.showLoginForm}>Login</button>
-                        {this.state.register && <form onSubmit={this.onRegister}>
-                            <div>
-                                <input type="text" name="email" placeholder="Your email" />
-                                <input type="password" name="password" placeholder="Your password" />
-                            </div>
-                            <input type="submit" value="Register" className="button" />
-                        </form>}
+                        {this.state.register && <Form onSubmit={this.onRegister}>
+                            <FormGroup>
+                                <Label>Email</Label>
+                                <Input type="text" name="email" className="form-control-lg" placeholder="something@email.com" />
+                            </FormGroup>
+                            <FormGroup>
+                            <Label>Password</Label>
+                                <Input type="password" name="password" className="form-control-lg" placeholder="Your secret" />
+                            </FormGroup>      
+                            <Button>Register</Button>
+                        </Form>}
 
                         {this.state.login && <form onSubmit={this.onLogin}>
-                            <div>
-                                <input type="text" name="email" placeholder="Your email" />
-                                <input type="password" name="password" placeholder="Your password" />
-                            </div>
-                            <input type="submit" value="Login" className="button" />
+                            <FormGroup>
+                                <Label>Email</Label>
+                                <Input type="text" name="email" className="form-control-lg" placeholder="something@email.com" />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label>Password</Label>
+                                <Input type="password" name="password" className="form-control-lg" placeholder="Your secret" />
+                            </FormGroup>
+                            <Button>Login</Button>
                         </form>}
                         <button className="button" onClick={this.startLogin}>Login with Google</button>
                     </div>
