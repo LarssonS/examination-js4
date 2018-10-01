@@ -5,56 +5,32 @@ import { Button, Form, FormGroup, Label, Input, Jumbotron, Container,
     Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, Collapse, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 export class LoginPage extends React.Component {
-    constructor(props) {
-        super(props);
-        
-        this.showRegisterForm = this.showRegisterForm.bind(this);
-        this.showLoginForm = this.showLoginForm.bind(this);
-
-        this.state = {
-            register: false,
-            login: false,
-            isOpen: false,
-            modal: false
-        };
-    }
+    
+    state = {
+        isOpen: false,
+        modalRegister: false,
+        modalLogin: false
+    };
+    
     toggle = () => {
         this.setState(() => ({
             isOpen: !this.state.isOpen
         }));
     }
-    toggleModal = () => {
+    toggleRegisterModal = () => {
         this.setState(() => ({
-            modal: !this.state.isOpen
+            modalRegister: !this.state.modalRegister
+        }));
+    }
+    toggleLoginModal = () => {
+        this.setState(() => ({
+            modalLogin: !this.state.modalLogin
         }));
     }
     startLogin = () => {
         this.props.startLogin();
     }
-    showRegisterForm = () => {
-        if (this.state.register === false) {
-            this.setState(() => ({
-                register: true,
-                login: false
-            }));
-        } else {
-            this.setState(() => ({
-                register: false
-            }));
-        }
-    }
-    showLoginForm = () => {
-        if (this.state.login === false) {
-            this.setState(() => ({
-                register: false,
-                login: true
-            }));
-        } else {
-            this.setState(() => ({
-                login: false
-            }));
-        }
-    }
+
     onRegister = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -81,11 +57,10 @@ export class LoginPage extends React.Component {
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="ml-auto" navbar>
                                 <NavItem className="ml-2">
-                                    <Button className="btn-lg" onClick={this.showRegisterForm}>Register</Button>
+                                    <Button className="btn-lg" onClick={this.toggleRegisterModal}>Create a new account</Button>
                                 </NavItem>
                                 <NavItem className="ml-2">
-                                    <Button className="btn-lg" onClick={this.showLoginForm}>Login</Button>
-                                    <Button color="danger" onClick={this.toggleModal}>Login</Button>
+                                    <Button className="btn-lg" onClick={this.toggleLoginModal}>Login</Button>
                                 </NavItem>
                                 <NavItem className="ml-2">
                                     <Button className="btn-lg" onClick={this.startLogin}>Login with Google</Button>
@@ -95,39 +70,41 @@ export class LoginPage extends React.Component {
                     </Container>    
                 </Navbar>
                 <div className="box-layout">
-                    <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                        <ModalHeader toggle={this.toggleModal}>Modal title</ModalHeader>
+                    <Modal isOpen={this.state.modalRegister} toggle={this.toggleRegisterModal} className={this.props.className}>
+                        <ModalHeader toggle={this.toggleRegisterModal}>Register</ModalHeader>
                         <ModalBody>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            <form onSubmit={this.onLogin}>
+                                <FormGroup>
+                                    <Label>Email</Label>
+                                    <Input type="text" name="email" className="form-control-lg" placeholder="something@email.com" />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label>Password</Label>
+                                    <Input type="password" name="password" className="form-control-lg" placeholder="Your secret" />
+                                </FormGroup>
+                                <Button color="primary">Create account</Button>{' '}
+                                <Button color="secondary" onClick={this.toggleRegisterModal}>Cancel</Button>
+                            </form>
                         </ModalBody>
-                        <ModalFooter>
-                            <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-                            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-                        </ModalFooter>
                     </Modal>
-                    {this.state.register && <Container className="mt-5"> <Form onSubmit={this.onRegister}>
-                        <FormGroup>
-                            <Label>Email</Label>
-                            <Input type="text" name="email" className="form-control-lg" placeholder="something@email.com" />
-                        </FormGroup>
-                        <FormGroup>
-                        <Label>Password</Label>
-                            <Input type="password" name="password" className="form-control-lg" placeholder="Your secret" />
-                        </FormGroup>      
-                        <Button>Register</Button>
-                    </Form> </Container>}
 
-                    {this.state.login && <Container className="mt-5"> <form onSubmit={this.onLogin}>
-                        <FormGroup>
-                            <Label>Email</Label>
-                            <Input type="text" name="email" className="form-control-lg" placeholder="something@email.com" />
-                        </FormGroup>
-                        <FormGroup>
-                            <Label>Password</Label>
-                            <Input type="password" name="password" className="form-control-lg" placeholder="Your secret" />
-                        </FormGroup>
-                        <Button>Login</Button>
-                    </form> </Container>}
+                    <Modal isOpen={this.state.modalLogin} toggle={this.toggleLoginModal} className={this.props.className}>
+                        <ModalHeader toggle={this.toggleLoginModal}>Login to existing account</ModalHeader>
+                        <ModalBody>
+                            <form onSubmit={this.onLogin}>
+                                <FormGroup>
+                                    <Label>Email</Label>
+                                    <Input type="text" name="email" className="form-control-lg" placeholder="something@email.com" />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label>Password</Label>
+                                    <Input type="password" name="password" className="form-control-lg" placeholder="Your secret" />
+                                </FormGroup>
+                                <Button color="primary" className="ml-2">Login</Button>{' '}
+                                <Button color="secondary" onClick={this.toggleLoginModal}>Cancel</Button>
+                            </form>
+                        </ModalBody>
+                    </Modal>
 
                     <Jumbotron className="box-layout__box">
                         <Container>

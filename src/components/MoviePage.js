@@ -16,7 +16,7 @@ export class MoviePage extends React.Component {
                             <CardBody>
                                 <CardTitle className="h2">Movie: {this.props.movie.title}</CardTitle>
                                 <CardSubtitle className="h3">Genre: {this.props.movie.genre}</CardSubtitle>
-                            </CardBody>                       
+                            </CardBody>
                             <CardImg width="100%" src={this.props.movie.filmWrapper} alt={this.props.movie.filmWrapper} />
                             <CardBody>
                                 <CardText>Raiting: {this.props.movie.raiting}</CardText>

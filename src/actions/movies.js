@@ -37,8 +37,7 @@ export const removeMovie = ({ id } = {}) => ({
 });
 
 export const startRemoveMovie = ({ id } = {}) => {
-    return (dispatch, getState) => {
-        const uid = getState().auth.uid;
+    return (dispatch) => {
         return database.ref(`users/movies/${id}`).remove().then(() => {
             dispatch(removeMovie({ id }));
         });
@@ -52,8 +51,7 @@ export const editMovie = (id, updates) => ({
 });
 
 export const startEditMovie = (id, updates) => {
-    return (dispatch, getState) => {
-        const uid = getState().auth.uid;
+    return (dispatch) => {
         return database.ref(`users/movies/${id}`).update(updates).then(() => {
             dispatch(editMovie(id, updates));
         });
@@ -66,8 +64,7 @@ export const setMovies = (movies) => ({
 });
 
 export const startSetMovies = () => {
-    return (dispatch, getState) => {
-        const uid = getState().auth.uid;
+    return (dispatch) => {
         return database.ref(`users/movies`).once('value').then((snapshot) => {
             const movies = [];
 
