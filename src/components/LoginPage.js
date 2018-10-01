@@ -73,7 +73,7 @@ export class LoginPage extends React.Component {
                     <Modal isOpen={this.state.modalRegister} toggle={this.toggleRegisterModal} className={this.props.className}>
                         <ModalHeader toggle={this.toggleRegisterModal}>Register</ModalHeader>
                         <ModalBody>
-                            <form onSubmit={this.onLogin}>
+                            <form onSubmit={this.onRegister}>
                                 <FormGroup>
                                     <Label>Email</Label>
                                     <Input type="text" name="email" className="form-control-lg" placeholder="something@email.com" />

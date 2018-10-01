@@ -31,7 +31,11 @@ export const removeMovie = ({ id } = {}) => ({
 });
 
 export const startRemoveMovie = ({ id } = {}) => {
-    return database.ref(`users/movies/${id}`).remove();
+    return(dispatch) => {
+        return database.ref(`users/movies/${id}`).remove().then(() => {
+            dispatch(removeMovie({ id }));
+        });
+    }
 };
 
 export const editMovie = ({id, updates}) => ({
@@ -40,8 +44,12 @@ export const editMovie = ({id, updates}) => ({
     updates
 });
 
-export const startEditMovie = (id, updates) => {
-    return database.ref(`users/movies/${id}`).update(updates);
+export const startEditMovie = ({id, updates}) => {
+    return(dispatch) => {
+        return database.ref(`users/movies/${id}`).update(updates).then(() => {
+           dispatch(editMovie({id, updates})); 
+        });
+    };
 };
 
 export function fetchListenerMovies(ref, callback) {
@@ -60,7 +68,6 @@ export function removeListenerMovie(ref, callback) {
 export function changedListenerMovie(ref, callback) {
     ref.on("child_changed", (snapshot) => {
             const data = { updates: snapshot.val(), id: snapshot.key };
-            console.log(data);
             callback(data);
         });
 };

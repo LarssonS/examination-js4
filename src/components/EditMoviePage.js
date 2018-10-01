@@ -6,7 +6,7 @@ import { Container, Button } from 'reactstrap';
 
 export class EditMoviePage extends React.Component {
     onSubmit = (movie) => {
-        this.props.startEditMovie(this.props.movie.id, movie),
+        this.props.startEditMovie({id: this.props.movie.id, updates: movie}),
         this.props.history.push('/');
     };
     onRemove = () => {
