@@ -7,9 +7,9 @@ import { Card, CardImg, CardText, CardBody,
 
 export class MoviePage extends React.Component {
     render() {
-        console.log('uid:' + this.props.uid + 'movieUid:' + this.props.movie.uid);
         return (
             <div>
+                {this.props.movie ?
                 <Container className="d-flex justify-content-center">
                     <Col sm="4">
                         <Card body>
@@ -38,7 +38,7 @@ export class MoviePage extends React.Component {
                             </CardBody>
                         </Card>
                     </Col>
-                </Container>    
+                    </Container> : <p>Loading...</p>}    
             </div>
         );
     }

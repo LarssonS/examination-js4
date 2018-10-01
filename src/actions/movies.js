@@ -21,13 +21,7 @@ export const startAddMovie = (movieData = {}) => {
         } = movieData;
         const movie = { title, description, director, genre, filmWrapper, raiting, createdAt, uid };
 
-        return database.ref(`users/movies`).push(movie).then((ref) => {
-            dispatch(addMovie({
-                id: ref.key,
-                uid: uid,
-                ...movie
-            }));
-        });
+        return database.ref(`users/movies`).push(movie);
     };
 };
 
@@ -37,45 +31,36 @@ export const removeMovie = ({ id } = {}) => ({
 });
 
 export const startRemoveMovie = ({ id } = {}) => {
-    return (dispatch) => {
-        return database.ref(`users/movies/${id}`).remove().then(() => {
-            dispatch(removeMovie({ id }));
-        });
-    };
+    return database.ref(`users/movies/${id}`).remove();
 };
 
-export const editMovie = (id, updates) => ({
+export const editMovie = ({id, updates}) => ({
     type: 'EDIT_MOVIE',
     id,
     updates
 });
 
 export const startEditMovie = (id, updates) => {
-    return (dispatch) => {
-        return database.ref(`users/movies/${id}`).update(updates).then(() => {
-            dispatch(editMovie(id, updates));
-        });
-    };
+    return database.ref(`users/movies/${id}`).update(updates);
 };
 
-export const setMovies = (movies) => ({
-    type: 'SET_MOVIES',
-    movies
-});
-
-export const startSetMovies = () => {
-    return (dispatch) => {
-        return database.ref(`users/movies`).once('value').then((snapshot) => {
-            const movies = [];
-
-            snapshot.forEach((childSnapshot) => {
-                movies.push({
-                    id: childSnapshot.key,
-                    ...childSnapshot.val()
-                });
-            });
-
-            dispatch(setMovies(movies));
+export function fetchListenerMovies(ref, callback) {
+    ref.on("child_added", (snapshot) => {
+            const data = { ...snapshot.val(), id: snapshot.key };
+            callback(data);
         });
-    };
+};
+
+export function removeListenerMovie(ref, callback) {
+    ref.on("child_removed", (snapshot) => {
+            callback(snapshot.key);
+        });
+};
+
+export function changedListenerMovie(ref, callback) {
+    ref.on("child_changed", (snapshot) => {
+            const data = { updates: snapshot.val(), id: snapshot.key };
+            console.log(data);
+            callback(data);
+        });
 };
