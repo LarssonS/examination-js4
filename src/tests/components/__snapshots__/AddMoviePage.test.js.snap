@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render AddMoviePage correctly 1`] = `
+<div>
+  <Container
+    tag="div"
+  >
+    <h1>
+      Add Movie
+    </h1>
+    <MovieForm
+      onSubmit={[Function]}
+    />
+  </Container>
+</div>
+`;

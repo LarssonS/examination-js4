@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render MovieListItem correctly 1`] = `
+<div>
+  <Card
+    body={true}
+    tag="div"
+  >
+    <CardImg
+      alt="img"
+      src="img"
+      tag="img"
+      top={true}
+      width="100%"
+    />
+    <CardBody
+      tag="div"
+    >
+      <CardTitle
+        tag="h2"
+      >
+        batman
+      </CardTitle>
+      <CardSubtitle
+        tag="h3"
+      >
+        action
+      </CardSubtitle>
+      <CardText
+        tag="p"
+      >
+        superhero
+      </CardText>
+      <Link
+        replace={false}
+        to="/movie/1"
+      >
+        <Button
+          color="secondary"
+          size="lg"
+          tag="button"
+        >
+          Read More
+        </Button>
+      </Link>
+    </CardBody>
+  </Card>
+</div>
+`;

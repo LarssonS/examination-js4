@@ -4,7 +4,7 @@ import MovieListItem from './MovieListItem';
 import selectMovies from '../selectors/movies';
 import { Row, Col } from 'reactstrap';
 
-const MovieList = (props) => (
+export const MovieList = (props) => (
     <div>
         <h1>Movie list</h1>
         

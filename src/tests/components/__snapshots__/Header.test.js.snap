@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Header correctly 1`] = `
+<Navbar
+  color="light"
+  expand="md"
+  light={true}
+  tag="nav"
+>
+  <Container
+    tag="div"
+  >
+    <Link
+      className="text-dark h1"
+      replace={false}
+      to="/dashboard"
+    >
+      MovieHub
+    </Link>
+    <Nav
+      className="ml-auto"
+      navbar={true}
+      tag="ul"
+      vertical={false}
+    >
+      <NavItem
+        className="mr-5"
+        tag="li"
+      >
+        <Link
+          className="text-dark h2"
+          replace={false}
+          to="/create"
+        >
+          Add a movie
+        </Link>
+      </NavItem>
+      <NavItem
+        tag="li"
+      >
+        <Button
+          className="btn-lg"
+          color="secondary"
+          onClick={[Function]}
+          tag="button"
+        >
+          Logout
+        </Button>
+      </NavItem>
+    </Nav>
+  </Container>
+</Navbar>
+`;

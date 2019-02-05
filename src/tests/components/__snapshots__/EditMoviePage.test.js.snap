@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render EditMoviePage 1`] = `
+<div>
+  <Container
+    tag="div"
+  >
+    <MovieForm
+      movie={
+        Object {
+          "createdAt": 345600000,
+          "description": "superhero",
+          "director": "unknown",
+          "filmWrapper": "img",
+          "genre": "sci-fi",
+          "id": "3",
+          "raiting": 6,
+          "title": "superman",
+        }
+      }
+      onSubmit={[Function]}
+    />
+    <Button
+      color="secondary"
+      onClick={[Function]}
+      tag="button"
+    >
+      Remove
+    </Button>
+  </Container>
+</div>
+`;

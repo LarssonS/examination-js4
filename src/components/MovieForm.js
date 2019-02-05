@@ -1,7 +1,6 @@
 import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css';
 import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 export default class MovieForm extends React.Component {

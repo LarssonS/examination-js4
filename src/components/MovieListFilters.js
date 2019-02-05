@@ -4,7 +4,7 @@ import { DateRangePicker } from 'react-dates';
 import { setTextFilter, sortByGenre, setStartDate, setEndDate } from '../actions/filters';
 import { Row, Col, Label, Input } from 'reactstrap';
 
-class MovieListFilters extends React.Component {
+export class MovieListFilters extends React.Component {
     state = {
         calendarFocused: null
     };

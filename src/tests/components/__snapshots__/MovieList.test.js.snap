@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render MovieList with empty message 1`] = `
+<div>
+  <h1>
+    Movie list
+  </h1>
+  <Row
+    tag="div"
+  >
+    <p>
+      No movies
+    </p>
+  </Row>
+</div>
+`;
+
+exports[`should render MovieList with movies 1`] = `
+<div>
+  <h1>
+    Movie list
+  </h1>
+  <Row
+    tag="div"
+  >
+    <Col
+      className="mt-4"
+      sm="3"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+       
+      <MovieListItem
+        createdAt={0}
+        description="superhero"
+        director="Nolan"
+        filmWrapper="img"
+        genre="action"
+        id="1"
+        raiting={9}
+        title="batman"
+      />
+       
+    </Col>
+    <Col
+      className="mt-4"
+      sm="3"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+       
+      <MovieListItem
+        createdAt={-345600000}
+        description="spider"
+        director="secret"
+        filmWrapper="img"
+        genre="action"
+        id="2"
+        raiting={7}
+        title="spiderman"
+      />
+       
+    </Col>
+    <Col
+      className="mt-4"
+      sm="3"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+       
+      <MovieListItem
+        createdAt={345600000}
+        description="superhero"
+        director="unknown"
+        filmWrapper="img"
+        genre="sci-fi"
+        id="3"
+        raiting={6}
+        title="superman"
+      />
+       
+    </Col>
+  </Row>
+</div>
+`;

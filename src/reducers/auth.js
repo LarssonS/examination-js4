@@ -10,8 +10,3 @@ export default (state = {}, action) => {
       return state;
   }
 };
-
-/* case 'LOGIN_WITH_EMAIL':
-return {
-  email: action.email
-}; */
